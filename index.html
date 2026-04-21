@@ -198,7 +198,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a0a; c
 </div>
 
 <script>
-// 24 Elite Negotiation Scenarios
 const scenarios=[
   // TIER 1: TACTICAL FOUNDATION
   {
@@ -636,6 +635,62 @@ const scenarios=[
       ok:{verdict:'Begging the machine.',color:'ok',points:20,text:'Pleading poverty to a trillion-dollar company does not work. They do not care if your startup dies; you are a rounding error on their spreadsheet. Asking for a "legacy tier" is a weak, open-ended question that will likely get a canned "No" from a low-level support rep.',lesson:['Massive corporations do not respond to pity. They respond to structured, systematic requests that fit into their procedural boxes.']},
       bad:{verdict:'Empty threats against a giant.',color:'bad',points:0,text:'Threatening a press release against a monopoly is laughable. They survive antitrust hearings; they don\'t care about your tweet. By declaring you are migrating immediately, you ensure they will shut off your API access on day 31, breaking your product before you have time to actually build the alternative.',lesson:['Never make aggressive threats against a counterparty that holds the power to instantly destroy your product.']}
     }
+  },
+
+  // TIER 4: BLACK SWAN EVENTS
+  {
+    tier: 4, tag:'legal', tagClass:'tag-conflict', difficulty:5,
+    title:'The Whistleblower Extortion',
+    context:'A disgruntled early employee threatens a PR crisis right before your massive Series C funding closes.',
+    them:{name:'Anonymous Email',role:'Ex-Employee',bg:'#4C0519',fg:'#FB7185',initials:'EX'},
+    you:{name:'You',role:'CEO',bg:'#4F46E5',fg:'#fff',initials:'YO'},
+    chat:[{speaker:'them',text:'I have 400 internal emails from 2023 showing we ignored data privacy protocols to scale faster. If I don\'t get a ₹5Cr "retroactive bonus" wired by tomorrow, TechCrunch gets the zip file.'}],
+    options:[
+      {text:'"We can\'t afford a PR disaster right before the Series C. We will wire the ₹5Cr, but you have to sign an ironclad, permanent non-disparagement agreement."',quality:'bad',letter:'A'},
+      {text:'"You signed an NDA. If you leak those, we will sue you into bankruptcy and ensure you never work in tech again."',quality:'ok',letter:'B'},
+      {text:'"We take privacy seriously and audited those 2023 protocols ourselves. I am briefing the board on this threat now. We will offer ₹20L as a strict nuisance settlement with a bulletproof NDA. Decline, and our GC files an extortion injunction by 5 PM."',quality:'good',letter:'C'}
+    ],
+    analysis:{
+      good:{verdict:'Front-running the crisis.',color:'good',points:100,text:'You stripped them of their leverage (the element of surprise) by front-running the threat to your board. By offering a tiny, legally binding nuisance fee tied to an injunction threat, you re-framed their "leak" from a noble whistleblowing act to documented criminal extortion.',lesson:['Blackmail only works in the dark. Neutralize threats by immediately briefing your stakeholders so the "secret" loses its power.','Never pay massive extortion demands; it guarantees they will come back for more. Offer a small nuisance settlement backed by a severe legal threat.'],say:'"I am briefing the board on this threat now. We offer ₹20L as a strict nuisance settlement. Decline, and our GC files an extortion injunction by 5 PM."'},
+      ok:{verdict:'A dangerous game of chicken.',color:'ok',points:40,text:'Threatening to sue them enforces the NDA, but if they are genuinely disgruntled, they might leak the files anyway just to watch you burn. By not offering a small exit bridge (nuisance fee), you back them into a corner where their only option is mutually assured destruction.',lesson:['Cornering a desperate person often triggers the exact catastrophic action you are trying to avoid. Leave them a small, face-saving exit.']},
+      bad:{verdict:'Funding your own demise.',color:'bad',points:0,text:'You just paid ₹5Cr to a blackmailer. An NDA won\'t protect you; if they leaked once, they will leak again when they run out of money. Furthermore, your Series C investors will uncover a sudden, unexplainable ₹5Cr wire in due diligence and pull the term sheet anyway.',lesson:['Paying massive extortion demands makes you a permanent target and violates your fiduciary duty to your shareholders.']}
+    }
+  },
+  {
+    tier: 4, tag:'gov', tagClass:'tag-board', difficulty:5,
+    title:'The Regulatory Shakedown',
+    context:'A hostile government regulator suddenly halts your core product\'s operation under a new, vague data law.',
+    them:{name:'Joint Secretary',role:'Ministry of Data',bg:'#0F172A',fg:'#38BDF8',initials:'GOV'},
+    you:{name:'You',role:'CEO',bg:'#4F46E5',fg:'#fff',initials:'YO'},
+    chat:[{speaker:'them',text:'Your routing module violates Section 9 of the new Data Sovereignty Act. We are freezing your operations pending a ₹20Cr fine and full surrender of your proprietary source code for "compliance auditing".'}],
+    options:[
+      {text:'"This is massive government overreach. Section 9 does not apply to our architecture. We will see you in federal court, and we are ignoring the operational freeze."',quality:'bad',letter:'A'},
+      {text:'"We will pay the ₹20Cr fine to lift the operational freeze immediately, but we will absolutely fight the source code surrender in court to protect our IP."',quality:'ok',letter:'B'},
+      {text:'"We share the Ministry\'s goal of protecting citizen data. Surrendering proprietary IP is impossible, but we will construct a secure, isolated "sandbox" for your auditors and co-author a public Data Safety Standard to highlight the Ministry\'s leadership here."',quality:'good',letter:'C'}
+    ],
+    analysis:{
+      good:{verdict:'Judo-flipping the bureaucracy.',color:'good',points:100,text:'Regulators are driven by optics and political wins, not just money. By offering to co-author a standard, you gave the bureaucrat a massive public PR victory. By offering a "sandbox" audit, you appeared completely transparent while mathematically preventing them from stealing your source code.',lesson:['Never fight a government regulator on pure logic; fight them on optics. Give them a political win that costs you nothing.','Never hand over raw source code to a government. Offer "black box" sandbox audits to simulate transparency without risking IP.'],say:'"We share your goals. Surrendering IP is impossible, but we will construct a secure sandbox for your auditors and co-author a public safety standard to highlight your leadership."'},
+      ok:{verdict:'Bleeding cash to survive.',color:'ok',points:30,text:'Refusing the source code surrender is mandatory, but paying a ₹20Cr fine immediately without negotiating sets a precedent that your company is an ATM for the government. They will find a new "violation" next year.',lesson:['Paying maximum government fines instantly makes you a target for future shakedowns. Negotiate the fine by offering compliance initiatives instead.']},
+      bad:{verdict:'You fought the law, and the law won.',color:'bad',points:0,text:'Telling a government regulator you are ignoring their freeze is corporate suicide. They will send police to your data centers to physically seize your servers, arrest your executives, and permanently revoke your business licenses. You cannot out-litigate the state.',lesson:['Never openly defy a direct regulatory freeze. Compliance optics are required for survival.']}
+    }
+  },
+  {
+    tier: 4, tag:'rival', tagClass:'tag-ma', difficulty:5,
+    title:'The Stolen Roadmap',
+    context:'A massive competitor has obtained your unreleased roadmap. Their CEO calls you, gloating, offering a hostile buyout.',
+    them:{name:'Victor Thorne',role:'CEO, GlobalTech',bg:'#171717',fg:'#D4D4D8',initials:'VT'},
+    you:{name:'You',role:'Founder',bg:'#4F46E5',fg:'#fff',initials:'YO'},
+    chat:[{speaker:'them',text:'We acquired your Q4 product roadmap from a mutual "friend." We are building all of it with 10x your engineers, launching next month. You\'re dead in the water. I\'ll buy your company right now for ₹50Cr before you go to zero.'}],
+    options:[
+      {text:'"We know exactly who leaked that, and we have the audit logs to prove it. If you build those features, we will tie you up in IP litigation for a decade."',quality:'ok',letter:'A'},
+      {text:'"I\'m surprised your team is wasting cycles on that abandoned Q4 decoy. But more importantly, you just confessed to receiving stolen trade secrets over a recorded line. If you launch those, our injunction freezes your platform. The price to acquire us just went to ₹250Cr."',quality:'good',letter:'B'},
+      {text:'"If you actually have the roadmap, we can\'t compete with your engineering headcount. We will accept the ₹50Cr offer to protect our investors\' capital."',quality:'bad',letter:'C'}
+    ],
+    analysis:{
+      good:{verdict:'Lethal counter-strike.',color:'good',points:100,text:'You neutralized his technological advantage by implying the roadmap was a fake decoy, injecting doubt into his engineering plan. Then, you weaponized his own arrogance: he admitted to corporate espionage. You instantly flipped the leverage and 5x\'d his anchor price.',lesson:['When an opponent uses stolen information, cast immediate doubt on the validity of that information to paralyze their execution.','Arrogance is a weakness. When a rival gloats about unethical behavior, immediately document it and use the legal liability as extreme leverage.'],say:'"I\'m surprised you\'re building that abandoned decoy. More importantly, you just confessed to receiving stolen trade secrets. The price to acquire us just went up to ₹250Cr."'},
+      ok:{verdict:'A standard legal defense.',color:'ok',points:40,text:'Threatening IP litigation is the standard playbook, but software features are notoriously hard to copyright. If they build it using "clean room" engineering, your lawsuit might fail, and they will still crush you in the market. You didn\'t attack his confidence.',lesson:['Threatening a lawsuit is expected. To win a hostile standoff, you must attack their psychological confidence in their own strategy.']},
+      bad:{verdict:'Total capitulation.',color:'bad',points:0,text:'You instantly folded to a bully. Even if they have your roadmap, executing software is entirely different from planning it. By accepting the lowball, you rewarded their corporate espionage and robbed your investors of massive upside.',lesson:['Never surrender your company based on a competitor\'s threat to out-build you. Execution is harder than stealing a PDF.']}
+    }
   }
 ];
 
@@ -643,7 +698,7 @@ let current=0, totalScore=0, answered=false;
 const scoreHistory=[];
 
 function initHome() {
-  document.getElementById('home-subtitle').innerHTML = `Master the psychological frameworks of high-stakes corporate warfare.<br>24 scenarios. 3 Elite Tiers.`;
+  document.getElementById('home-subtitle').innerHTML = `Master the psychological frameworks of high-stakes corporate warfare.<br>27 scenarios. 4 Elite Tiers.`;
   
   const listDiv = document.getElementById('dynamic-scenario-list');
   let listHtml = '';
@@ -652,6 +707,7 @@ function initHome() {
   const tier1 = scenarios.filter(s => s.tier === 1);
   const tier2 = scenarios.filter(s => s.tier === 2);
   const tier3 = scenarios.filter(s => s.tier === 3);
+  const tier4 = scenarios.filter(s => s.tier === 4);
 
   const buildTier = (tierData, title) => {
     let html = `<div class="tier-section">
@@ -677,6 +733,7 @@ function initHome() {
   listHtml += buildTier(tier1, "Tier 1: Tactical Foundation");
   listHtml += buildTier(tier2, "Tier 2: The Corporate Arena");
   listHtml += buildTier(tier3, "Tier 3: The Executive Boardroom");
+  listHtml += buildTier(tier4, "Tier 4: Black Swan Events");
 
   listDiv.innerHTML = listHtml;
 }
@@ -823,7 +880,7 @@ function showResults(){
   
   let grade, gradeSub;
   if(pct>=90){grade='Apex Negotiator';gradeSub='You control the frame, neutralize aggressive anchors, and navigate boardroom warfare with lethal precision. You are ready for the executive table.';}
-  else if(pct>=70){grade='Strategic Operator';gradeSub='Strong tactical instincts. You survive the corporate arena, but occasionally concede leverage against extreme pressure. Review the Tier 3 analysis.';}
+  else if(pct>=70){grade='Strategic Operator';gradeSub='Strong tactical instincts. You survive the corporate arena, but occasionally concede leverage against extreme pressure. Review the Tier 3 and Tier 4 analysis.';}
   else if(pct>=50){grade='Compromiser';gradeSub='You rely on splitting the difference and logical arguments. In high-stakes environments, you are leaving massive equity and revenue on the table.';}
   else{grade='Liability';gradeSub='You negotiate emotionally. You react to anchors, issue empty threats, and fail to secure mechanical leverage. Study the fundamental frameworks immediately.';}
 
